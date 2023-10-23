@@ -1,0 +1,150 @@
+create database BIOSKOP
+go
+
+use BIOSKOP
+go
+
+create table FILM(
+idFilma int identity primary key not null,
+naziv nvarchar(50) not null,
+reziser nvarchar(100) not null,
+godinaIzdanja int not null,
+zanr nvarchar(20) not null,
+opis nvarchar(250) null,
+cena money default 400 null
+)
+go
+
+insert into FILM (naziv,reziser,godinaIzdanja,zanr,opis,cena)
+VALUES('LotR: The Fellowship of the Ring','Peter Jackson', 2001, 'Fantazija', 'We had one breakfast yes, but what about second breakfast?', 844),
+	  ('LotR: The Two Towers','Peter Jackson', 2002, 'Fantazija', 'They are taking the hobbits to Isengard!', 738),
+	  ('LotR: The Return of the King','Peter Jackson', 2003, 'Fantazija', 'My friends you bow to no one.', 639),
+	  ('Blade','Stephen Norrington', 1998, 'Akcija', 'Vampires die.', 415),
+	  ('Porco Rosso','Hayao Miyazaki', 1992, 'Animacija', 'I would rather be a pig than a fascist.',450),
+	  ('Spirited Away', 'Hayao Miyazaki', 2001,'Animacija', 'hurb hurb hurb', 738),
+	  ('Rush Hour', 'Brett Ratner', 1998, 'Komedija', 'War! What is it good for? Nothing! Say it again yall!', 600)
+go
+
+
+create table OSOBA(
+idOsobe int identity primary key not null,
+ime nvarchar(25) not null,
+prezime nvarchar(50) not null
+)
+go
+
+create table KORISNIK(
+idKorisnika int identity primary key not null,
+korisnickoIme nvarchar(20) not null,
+lozinka nvarchar(30) not null,
+email nvarchar(50) not null,
+idOsobe int
+)
+go
+
+alter table KORISNIK
+add constraint fk_korisnik_osoba foreign key (idOsobe) references OSOBA (idOsobe)
+go
+
+insert into OSOBA(ime,prezime)
+VALUES ('bioskop', 'bioskop')
+go
+insert into KORISNIK(korisnickoIme,lozinka,email,idOsobe)
+VALUES('admin','admin','admin',1)
+go
+
+create table RADNIK(
+idRadnika int identity primary key not null,
+pozicija nvarchar(30) not null,
+jmbg nvarchar(13) not null,
+adresa nvarchar(50) not null,
+telefon nvarchar(20) not null,
+plata money not null,
+idOsobe int,
+constraint ak_radnik_jmbg unique (jmbg)
+)
+go
+
+alter table RADNIK
+add constraint fk_radnik_osoba foreign key (idOsobe) references OSOBA (idOsobe)
+go
+
+create table SALA(
+idSale int identity primary key not null,
+naziv nvarchar(6) not null
+)
+go
+
+insert into SALA (naziv)
+VALUES ('Sala1'),('Sala2'),('Sala3')
+go
+
+create table SEDISTE(
+idSedista int identity primary key,
+zauzeto nvarchar(2) not null,
+idSale int not null
+)
+go
+
+alter table SEDISTE
+add constraint fk_sala_sediste foreign key (idSale) references SALA (idSale)
+go
+
+insert into SEDISTE (zauzeto,idSale)
+VALUES ('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),
+	   ('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),
+	   ('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),
+	   ('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),
+	   ('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),('ne',1),
+	   ('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),
+	   ('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),
+	   ('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),
+	   ('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),
+	   ('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),('ne',2),
+	   ('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),
+	   ('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),
+	   ('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),
+	   ('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),
+	   ('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3),('ne',3)
+go
+
+create table KARTA(
+idKarte int identity primary key not null,
+idFilma int not null,
+idSale int not null,
+idSedista int not null,
+foreign key (idFilma) references FILM (idFilma),
+foreign key (idSale) references SALA (idSale),
+foreign key (idSedista) references SEDISTE (idSedista)
+)
+go
+
+create table TRANSAKCIJA(
+idTransakcije int identity primary key not null,
+brojKartice varchar(20) not null,
+bezbednosniKod int not null,
+idKorisnika int not null,
+idKarte int not null,
+foreign key (idKorisnika) references KORISNIK (idKorisnika),
+foreign key (idKarte) references KARTA (idKarte)
+)
+go
+
+create table GLUMAC(
+idGlumca int identity primary key not null,
+idOsobe int
+)
+go
+
+alter table GLUMAC
+add constraint fk_glumac_osoba foreign key (idOsobe) references OSOBA (idOsobe)
+go
+
+create table FILM_GLUMAC(
+idGlumca int,
+idFilma int,
+primary key (idGlumca, idFilma),
+foreign key (idGlumca) references GLUMAC (idGlumca),
+foreign key (idFilma) references FILM (idFilma)
+)
+go

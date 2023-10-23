@@ -1,0 +1,77 @@
+﻿<Page x:Class="Bioskop.Stranice.stranicaRezervacije"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bioskop.Stranice"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="800"
+      MaxHeight="700" MaxWidth="800"
+      Title="stranicaRezervacije"
+      Background="#FFD1D2FF">
+
+    <Grid>
+        <DataGrid Name="DataGrid" AutoGenerateColumns="False" SelectionChanged="DataGrid_SelectionChanged" Width="700" Height="100" Margin="50,415,50,185" AlternatingRowBackground="AntiqueWhite" AlternationCount="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding idKarte}" Header="ID KARTE" Width="*" />
+                <DataGridTextColumn Binding="{Binding idFilma}" Header="ID Filma" Width="*"/>
+                <DataGridTextColumn Binding="{Binding idSale}" Header="Sala" Width="*"/>
+                <DataGridTextColumn Binding="{Binding idSedista}" Header="Sediste" Width="*"/>
+                <DataGridTextColumn Binding="{Binding cena}" Header="cena" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid Name="DataGridFilm" AutoGenerateColumns="False" SelectionChanged="DataGridFilm_SelectionChanged" Width="700" Height="100" Margin="50,310,50,290" AlternatingRowBackground="AntiqueWhite" AlternationCount="2" BorderBrush="#FF5D49EB">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding idFilma}" Header="ID Filma" Width="*"/>
+                <DataGridTextColumn Binding="{Binding naziv}" Header="Naziv" Width="*"/>
+                <DataGridTextColumn Binding="{Binding cena}" Header="cena" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid Name="DataGridKorisnik" AutoGenerateColumns="False" SelectionChanged="DataGridKorisnik_SelectionChanged" Width="700" Height="100" Margin="50,205,50,395" AlternatingRowBackground="AntiqueWhite" AlternationCount="2" BorderBrush="#FF5D49EB">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding idKorisnika}" Header="ID Korisnika" Width="*"/>
+                <DataGridTextColumn Binding="{Binding korisnickoIme}" Header="Korisnicko Ime" Width="*"/>
+                <DataGridTextColumn Binding="{Binding email}" Header="Email" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid Name="DataGridTransakcija" AutoGenerateColumns="False" SelectionChanged="DataGridTransakcija_SelectionChanged" Width="700" Height="100" Margin="50,520,50,80" AlternatingRowBackground="AntiqueWhite" AlternationCount="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding idTransakcije}" Header="ID Transakcije" Width="*"/>
+                <DataGridTextColumn Binding="{Binding brojKartice}" Header="Broj Kartice" Width="*"/>
+                <DataGridTextColumn Binding="{Binding bezbednosniKod}" Header="Bezbednosni kod" Width="*"/>
+                <DataGridTextColumn Binding="{Binding idKorisnika}" Header="ID Korisnika" Width="*"/>
+                <DataGridTextColumn Binding="{Binding idKorisnika}" Header="ID Karte" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid HorizontalAlignment="Center" Height="200" Width="700" VerticalAlignment="Top">
+            <Label   Content="REZERVACIJE"     HorizontalAlignment="Left" Margin="95,8,0,0"     FontSize="16"          VerticalAlignment="Top" Width="115" Height="30" FontWeight="Bold" Foreground="#FF5D49EB"/>
+            <Label   Content="Broj Kartice"        HorizontalAlignment="Left" Margin="215,36,0,0"    FontSize="14"          VerticalAlignment="Top"/>
+            <Label   Content="Bezbednosni Kod"    HorizontalAlignment="Left" Margin="215,66,0,0"    FontSize="14"          VerticalAlignment="Top"/>
+            <Label   Content="Cena"    HorizontalAlignment="Left" Margin="215,96,0,0"    FontSize="14"          VerticalAlignment="Top"/>
+            <Label   Content="ID Filma"    HorizontalAlignment="Left" Margin="215,126,0,0"    FontSize="14"          VerticalAlignment="Top"/>
+            <Label   Content="Broj Sedista(1-50)"    HorizontalAlignment="Left" Margin="215,156,0,0"    FontSize="14"          VerticalAlignment="Top"/>
+            <Label   Content="Sala"    HorizontalAlignment="Left" Margin="480,36,0,0"    FontSize="14"          VerticalAlignment="Top"/>
+            <Label   Content="ID Korisnika"    HorizontalAlignment="Left" Margin="480,66,0,0"    FontSize="14"          VerticalAlignment="Top"/>
+            <Label   Content="ID Karte"    HorizontalAlignment="Left" Margin="480,96,0,0"    FontSize="14"          VerticalAlignment="Top"/>
+            <TextBox Name="txtbxidTransakcije" Visibility="Hidden" BorderBrush="#FF5D49EB"/>
+            <TextBox Name="txtbxidKorisnika"       HorizontalAlignment="Left" Margin="350,70,0,0"     TextWrapping="Wrap"    VerticalAlignment="Top" Width="125" Height="20" BorderBrush="#FF5D49EB"/>
+            <TextBox Name="txtbxidKarte"       HorizontalAlignment="Left" Margin="350,100,0,0"     TextWrapping="Wrap"    VerticalAlignment="Top" Width="125" Height="20" BorderBrush="#FF5D49EB"/>
+            <TextBox Name="txtbxbrojKartice"      HorizontalAlignment="Left" Margin="10,40,0,0"     TextWrapping="Wrap"    VerticalAlignment="Top" Width="200" Height="20" BorderBrush="#FF5D49EB"/>
+            <TextBox Name="txtbxbezbednosniKod"  HorizontalAlignment="Left" Margin="10,70,0,0"     TextWrapping="Wrap"    VerticalAlignment="Top" Width="200" Height="20" BorderBrush="#FF5D49EB"/>
+            <TextBox Name="txtbxCena" HorizontalAlignment="Left" Margin="10,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="20" BorderBrush="#FF5D49EB"/>
+            <TextBox Name="txtbxidFilma" HorizontalAlignment="Left" Margin="10,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="20" BorderBrush="#FF5D49EB"/>
+            <TextBox Name="txtbxidSedista" HorizontalAlignment="Left" Margin="10,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="20" BorderBrush="#FF5D49EB"/>
+            <ComboBox Name="cmbbxidSale" Margin="350,39,225,141" BorderBrush="#FF5D49EB">
+                <ComboBoxItem>Sala1</ComboBoxItem>
+                <ComboBoxItem>Sala2</ComboBoxItem>
+                <ComboBoxItem>Sala3</ComboBoxItem>
+            </ComboBox>
+            <Button x:Name="btnUnesi"     Content="Unesi"            Margin="590,10,30,170" Height="20" Width="80" Click="btnUnesi_Click" BorderBrush="#FF5D49EB"  />
+            <Button x:Name="btnNazad"     Content="Nazad"            Margin="10,15,610,165" Height="20" Width="80" Click="btnNazad_Click" BorderBrush="#FF5D49EB"/>
+            <Button x:Name="btnIzmeni"    Content="Izmeni"           Margin="590,40,30,140" Height="20" Width="80" Click="btnIzmeni_Click" BorderBrush="#FF5D49EB" />
+            <Button x:Name="btnObrisi"    Content="Obrisi"           Margin="590,70,30,110" Height="20" Width="80" Click="btnObrisi_Click" BorderBrush="#FF5D49EB"/>
+            <Button x:Name="btnPonisti"   Content="Ponisti"          Margin="590,100,30,80" Height="20" Width="80" Click="btnPonisti_Click" BorderBrush="#FF5D49EB"/>
+            <Button x:Name="btnOsvezi" Content="Osvezi" Margin="590,131,30,49" Height="20" Width="80" Click="btnOsvezi_Click" BorderBrush="#FF5D49EB"/>
+        </Grid>
+    </Grid>
+</Page>

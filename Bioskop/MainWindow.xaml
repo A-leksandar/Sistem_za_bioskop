@@ -1,0 +1,31 @@
+﻿<Window x:Class="Bioskop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bioskop"
+        mc:Ignorable="d"
+        Title="Glavni prozor" Height="720" Width="1080"
+        MinHeight="120" MinWidth="1080" MaxWidth="1080"
+        Background="#FFD1D2FF" BorderBrush="#FF5E57F7">
+    <Border>
+        <StackPanel>
+            <Grid>
+                <Grid HorizontalAlignment="Center" Height="684" VerticalAlignment="Center" Width="1060">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="Filmovi"     Content="Filmovi"     Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center" Height="50" Width="185" Margin="15 15 15 15" BorderBrush="#FF0C0D39" BorderThickness="3" Foreground="White" Background="#FF594AFA" FontSize="16" FontWeight="Bold" Click="Filmovi_Click"/>
+                    <Button x:Name="Glumci"      Content="Glumci"      Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Center" Height="50" Width="185" Margin="15 15 15 15" BorderBrush="#FF0C0D39" BorderThickness="3" Foreground="White" Background="#FF594AFA" FontSize="16" FontWeight="Bold" Click="Glumci_Click"/>
+                    <Button x:Name="Korisnici"   Content="Korisnici"   Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Height="50" Width="185" Margin="15 15 15 15" BorderBrush="#FF0C0D39" BorderThickness="3" Foreground="White" Background="#FF594AFA" FontSize="16" FontWeight="Bold" Click="Korisnici_Click"/>
+                    <Button x:Name="Radnici"     Content="Radnici"     Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Center" Height="50" Width="185" Margin="15 15 15 15" BorderBrush="#FF0C0D39" BorderThickness="3" Foreground="White" Background="#FF594AFA" FontSize="16" FontWeight="Bold" Click="Radnici_Click"/>
+                    <Button x:Name="Rezervacije" Content="Rezervacije" Grid.Column="4" VerticalAlignment="Top" HorizontalAlignment="Center" Height="50" Width="185" Margin="15 15 15 15" BorderBrush="#FF0C0D39" BorderThickness="3" Foreground="White" Background="#FF594AFA" FontSize="16" FontWeight="Bold" Click="Rezervacije_Click"/>
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </Border>
+</Window>

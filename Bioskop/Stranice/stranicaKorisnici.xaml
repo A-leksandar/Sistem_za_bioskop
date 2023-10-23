@@ -1,0 +1,47 @@
+﻿<Page x:Class="Bioskop.Stranice.stranicaKorisnici"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bioskop.Stranice"
+      mc:Ignorable="d" 
+      d:DesignHeight="420" d:DesignWidth="720"
+      MinHeight="420" MinWidth="720"
+      MaxHeight="420" MaxWidth="720"
+      Title="Korisnici"
+      Background="#FFD1D2FF">
+
+    <Grid>
+        <DataGrid Name="DataGrid" AutoGenerateColumns="False" Margin="10, 215, 10, 10" SelectionChanged="DataGrid_SelectionChanged" AlternatingRowBackground="AntiqueWhite" AlternationCount="2" BorderBrush="#FF5D49EB">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding korisnickoIme}" Header="Korisnicko Ime" Width="*" />
+                <DataGridTextColumn Binding="{Binding email}" Header="Email" Width="*"/>
+                <DataGridTextColumn Binding="{Binding lozinka}" Header="Lozinka" Width="*"/>
+                <DataGridTextColumn Binding="{Binding ime}" Header="Ime" Width="*"/>
+                <DataGridTextColumn Binding="{Binding prezime}" Header="Prezime" Width="*"/>
+                <DataGridTextColumn Binding="{Binding idKorisnika}" Header="ID" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid HorizontalAlignment="Center" Height="200" Width="700" VerticalAlignment="Top">
+            <Label   Content="KORISNICI" HorizontalAlignment="Left" Margin="115,4,0,0" FontSize="16" VerticalAlignment="Top" Width="95" BorderBrush="#FF5D49EB" FontWeight="Bold" Foreground="#FF4130BD"/>
+            <Label   Content="Korisnicko Ime"             HorizontalAlignment="Left" Margin="215,159,0,0"   FontSize="14"       VerticalAlignment="Top"/>
+            <Label   Content="Ime"           HorizontalAlignment="Left" Margin="215,36,0,0"  FontSize="14"       VerticalAlignment="Top"/>
+            <Label   Content="Email"    HorizontalAlignment="Left" Margin="215,96,0,0"  FontSize="14"       VerticalAlignment="Top"/>
+            <Label   Content="Lozinka"              HorizontalAlignment="Left" Margin="215,124,0,0" FontSize="14"       VerticalAlignment="Top"/>
+            <Label   Content="Prezime"              HorizontalAlignment="Left" Margin="215,66,0,0"  FontSize="14"       VerticalAlignment="Top"/>
+            <TextBox x:Name="txtbxKorisnickoIme"           HorizontalAlignment="Left" Margin="10,163,0,0"   TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="20" BorderBrush="#FF5D49EB"/>
+            <TextBox x:Name="txtbxIme"         HorizontalAlignment="Left" Margin="10,40,0,0"   TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="20" BorderBrush="#FF5D49EB"/>
+            <TextBox x:Name="txtbxPrezime"            HorizontalAlignment="Left" Margin="10,70,0,0"   TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="20" BorderBrush="#FF5D49EB"/>
+            <TextBox x:Name="txtbxEmail"   HorizontalAlignment="Left" Margin="10,100,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="20" BorderBrush="#FF5D49EB"/>
+            <TextBox x:Name="txtbxLozinka"   HorizontalAlignment="Left" Margin="10,130,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="20" BorderBrush="#FF5D49EB"/>
+            <TextBox x:Name="txtbxidKorisnika" Visibility="Hidden"/>
+            <TextBox x:Name="txtbxidOsobe" Visibility="Hidden"/>
+            <Button x:Name="btnUnesi"   Content="Unesi"   Margin="590,10,30,170" Height="20" Width="80" Click="btnUnesi_Click" BorderBrush="#FF5D49EB"  />
+            <Button x:Name="btnIzmeni"  Content="Izmeni"  Margin="590,40,30,140" Height="20" Width="80" Click="btnIzmeni_Click" BorderBrush="#FF5D49EB" />
+            <Button x:Name="btnObrisi"  Content="Obrisi"  Margin="590,70,30,110" Height="20" Width="80" Click="btnObrisi_Click" BorderBrush="#FF5D49EB"/>
+            <Button x:Name="btnPonisti" Content="Ponisti" Margin="590,100,30,80" Height="20" Width="80" Click="btnPonisti_Click" BorderBrush="#FF5D49EB"/>
+            <Button x:Name="btnNazad"   Content="Nazad"   Margin="10,10,590,170" Height="20"  Click="btnNazad_Click" BorderBrush="#FF5D49EB"/>
+            <Button x:Name="btnOsvezi" Content="Osvezi" Margin="590,131,30,49" Height="20" Width="80" Click="btnOsvezi_Click" BorderBrush="#FF5D49EB"/>
+        </Grid>
+    </Grid>
+</Page>

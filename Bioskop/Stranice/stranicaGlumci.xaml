@@ -1,0 +1,44 @@
+﻿<Page x:Class="Bioskop.Stranice.stranicaGlumci"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bioskop.Stranice"
+      mc:Ignorable="d" 
+      d:DesignHeight="420" d:DesignWidth="720"
+      MaxWidth="720" MaxHeight="420"
+      MinWidth="720" MinHeight="420"
+      Title="Glumci"
+      Background="#FFD1D2FF">
+
+    <Grid>
+        <DataGrid Name="DataGrid" AutoGenerateColumns="False" Margin="10,155,10,155" SelectionChanged="DataGrid_SelectionChanged" Width="700" Height="110" AlternatingRowBackground="AntiqueWhite" AlternationCount="2" Foreground="#FF5D49EB">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ime}" Header="Ime" Width="*" />
+                <DataGridTextColumn Binding="{Binding prezime}" Header="Prezime" Width="*"/>
+                <DataGridTextColumn Binding="{Binding idGlumca}" Header="ID" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid Name="DataGridFilm" AutoGenerateColumns="False" Margin="10,300,10,10" Width="700" Height="110" AlternatingRowBackground="AntiqueWhite" AlternationCount="2" Foreground="#FF5D49EB">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding naziv}" Header="Naziv filma" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+            <Grid HorizontalAlignment="Center" Height="200" Width="700" VerticalAlignment="Top">
+            <Label   Content="GLUMCI"     HorizontalAlignment="Left" Margin="110,8,0,0"     FontSize="16"          VerticalAlignment="Top" Width="100" Height="30" FontWeight="Bold" Foreground="#FF5D49EB"/>
+            <Label   Content="Ime"        HorizontalAlignment="Left" Margin="215,36,0,0"    FontSize="14"          VerticalAlignment="Top"/>
+            <Label   Content="Prezime"    HorizontalAlignment="Left" Margin="215,66,0,0"    FontSize="14"          VerticalAlignment="Top"/>
+            <TextBox Name="txtbxidGlumca" HorizontalAlignment="Left" Margin="10,160,0,0"    TextWrapping="Wrap"    VerticalAlignment="Top" Width="200" Height="20" Visibility="Hidden"/>
+            <TextBox Name="txtbxIme"      HorizontalAlignment="Left" Margin="10,40,0,0"     TextWrapping="Wrap"    VerticalAlignment="Top" Width="200" Height="20" SelectionBrush="#FF5D49EB"/>
+            <TextBox Name="txtbxPrezime"  HorizontalAlignment="Left" Margin="10,70,0,0"     TextWrapping="Wrap"    VerticalAlignment="Top" Width="200" Height="20" SelectionBrush="#FF5D49EB"/>
+            <TextBox Name="txtbxidOsobe" Visibility="Hidden"/>
+            <Button x:Name="btnUnesi"     Content="Unesi"            Margin="590,10,30,170" Height="20" Width="80" Click="btnUnesi_Click" BorderBrush="#FF5D49EB"  />
+            <Button x:Name="btnNazad"     Content="Nazad"            Margin="10,15,610,165" Height="20" Width="80" Click="btnNazad_Click" BorderBrush="#FF5D49EB"/>
+            <Button x:Name="btnIzmeni"    Content="Izmeni"           Margin="590,40,30,140" Height="20" Width="80" Click="btnIzmeni_Click" BorderBrush="#FF5D49EB" />
+            <Button x:Name="btnObrisi"    Content="Obrisi"           Margin="590,70,30,110" Height="20" Width="80" Click="btnObrisi_Click" BorderBrush="#FF5D49EB"/>
+            <Button x:Name="btnPonisti"   Content="Ponisti"          Margin="590,100,30,80" Height="20" Width="80" Click="btnPonisti_Click" BorderBrush="#FF5D49EB"/>
+            <Button x:Name="btnOsvezi" Content="Osvezi" Margin="590,131,30,49" Height="20" Width="80" Click="btnOsvezi_Click" BorderBrush="#FF5D49EB"/>
+            <Button x:Name="btnPretrazi" Content="Pretrazi" Margin="0,273,620,-93" Height="20" Width="80" Click="btnPretrazi_Click" BorderBrush="#FF5D49EB"/>
+        </Grid>
+    </Grid>
+</Page>
