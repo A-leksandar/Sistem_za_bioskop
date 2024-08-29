@@ -1,0 +1,39 @@
+﻿<Window x:Class="WpfApp1.Prozori.Admin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.Prozori"
+        mc:Ignorable="d"
+        Title="Admin" Height="450" Width="800" MinHeight="450" MinWidth="800" WindowState="Maximized" WindowStartupLocation="CenterScreen" Background="#FF1A1A1A">
+    <Viewbox>
+        <Grid Width="800" Height="440">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:FieldModifier="public" x:Name="dugme_FilmoviAdmin"      Grid.Row="0" Grid.Column="0" Width="70" Height="20" Margin="0,12,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Filmovi"     Background="#FF2E2E2E" Foreground="#FFB2B2B2" BorderBrush="#FF4D4D4D" Click="klik_FilmoviAdmin"/>
+            <Button x:FieldModifier="public" x:Name="dugme_GlumciAdmin"       Grid.Row="1" Grid.Column="0" Width="70" Height="20" Margin="0,12,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Glumci"      Background="#FF2E2E2E" Foreground="#FFB2B2B2" BorderBrush="#FF4D4D4D" Click="klik_GlumciAdmin"/>
+            <Button x:FieldModifier="public" x:Name="dugme_UlogeAdmin"        Grid.Row="2" Grid.Column="0" Width="70" Height="20" Margin="0,12,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Uloge"       Background="#FF2E2E2E" Foreground="#FFB2B2B2" BorderBrush="#FF4D4D4D" Click="klik_UlogeAdmin"/>
+            <Button x:FieldModifier="public" x:Name="dugme_ProjekcijeAdmin"   Grid.Row="3" Grid.Column="0" Width="70" Height="20" Margin="0,12,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Projekcije"  Background="#FF2E2E2E" Foreground="#FFB2B2B2" BorderBrush="#FF4D4D4D" Click="klik_ProjekcijeAdmin"/>
+            <Button x:FieldModifier="public" x:Name="dugme_KarteAdmin"        Grid.Row="4" Grid.Column="0" Width="70" Height="20" Margin="0,12,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Karte"       Background="#FF2E2E2E" Foreground="#FFB2B2B2" BorderBrush="#FF4D4D4D" Click="klik_KarteAdmin"/>
+            <Button x:FieldModifier="public" x:Name="dugme_TransakcijeAdmin"  Grid.Row="5" Grid.Column="0" Width="70" Height="20" Margin="0,12,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Transakcije" Background="#FF2E2E2E" Foreground="#FFB2B2B2" BorderBrush="#FF4D4D4D" Click="klik_TransakcijeAdmin"/>
+            <Button x:FieldModifier="public" x:Name="dugme_KorisniciAdmin"    Grid.Row="6" Grid.Column="0" Width="70" Height="20" Margin="0,12,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Korisnici"   Background="#FF2E2E2E" Foreground="#FFB2B2B2" BorderBrush="#FF4D4D4D" Click="klik_KorisniciAdmin"/>
+            <Button x:FieldModifier="public" x:Name="dugme_RadniciAdmin"      Grid.Row="7" Grid.Column="0" Width="70" Height="20" Margin="0,12,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Radnici"     Background="#FF2E2E2E" Foreground="#FFB2B2B2" BorderBrush="#FF4D4D4D" Click="klik_RadniciAdmin"/>
+
+            <Button x:FieldModifier="public" x:Name="dugme_OdjaviSe"          Grid.Row="0" Grid.Column="2" Width="70" Height="20" Margin="0,12,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Odjavi se"   Background="#FF2E2E2E" Foreground="#FFB2B2B2" BorderBrush="#FF4D4D4D" Click="klik_OdjaviSe"/>
+        </Grid>
+    </Viewbox>
+</Window>

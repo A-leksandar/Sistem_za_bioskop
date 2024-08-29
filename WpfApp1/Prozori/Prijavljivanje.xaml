@@ -1,0 +1,51 @@
+﻿<Window x:Class="WpfApp1.Prozori.Prijavljivanje"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.Prozori"
+        mc:Ignorable="d"
+        Title="Prijavljivanje"  Height="450" Width="800" MinHeight="450" MinWidth="800" WindowState="Maximized">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="Black"/>
+            <GradientStop Color="#FFB291FF" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Viewbox>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="250"/>
+            </Grid.ColumnDefinitions>
+            <Button x:FieldModifier="public" x:Name="dugmeNazad" Width="20" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,10,0,0" Foreground="#00000000" Background="#00DDDDDD" BorderBrush="Transparent" Click="klik_Nazad">
+                <Polygon Points="19,-5 19,35 0,17" Height="31">
+                    <Polygon.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFAE9BD8" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Polygon.Fill>
+                </Polygon>
+            </Button>
+            <Grid Grid.Column="1" Background="White" Margin="20,90,20,136">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="33"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="42"/>
+                </Grid.RowDefinitions>
+
+                <Label   x:FieldModifier="public" Grid.Row="0" Name="labelaEmailAdresaPrijava"     FontFamily="Arial" FontSize="14" VerticalAlignment="Bottom" Margin="16,0,0,0" Content="Email adresa:"/>
+                <TextBox x:FieldModifier="public" Grid.Row="1" Name="textboxPrijavljivanjeEmail"   Width="220" Height="25" FontSize="12" FontFamily="Arial" VerticalAlignment="Top"></TextBox>
+                <Label   x:FieldModifier="public" Grid.Row="2" Name="labelaLozinkaPrijava"         FontFamily="Arial" FontSize="14" VerticalAlignment="Bottom" Margin="16,0,0,0" Content="Lozinka:"/>
+                <TextBox x:FieldModifier="public" Grid.Row="3" Name="textboxPrijavljivanjeLozinka" Width="220" Height="25" FontSize="12" FontFamily="Arial" VerticalAlignment="Top"></TextBox>
+
+                <Button  x:FieldModifier="public" Grid.Row="4" Name="dugmePrijaviKorisnika" Width="100px" Height="25" Margin="0,0,0,9" FontFamily="Arial" FontSize="13" Content="Prijavi se" Click="klik_PrijaviSe"/>
+            </Grid>
+        </Grid>
+    </Viewbox>
+    
+</Window>

@@ -1,0 +1,27 @@
+﻿<Window x:Class="WpfApp1.Prozori.Karte_Admin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.Prozori"
+        mc:Ignorable="d"
+        Title="Karte_Admin" Height="450" Width="800" MinHeight="450" MinWidth="800" WindowState="Maximized" WindowStartupLocation="CenterScreen" Background="#FF1A1A1A">
+    <Viewbox>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button   x:FieldModifier="public" Name="dugme_Nazad"                    Width="100" Height="20"  Grid.Row="0" HorizontalAlignment="Left"   VerticalAlignment="Center" Margin="15,0,0,0" Content="Nazad"         Background="#FF2E2E2E" Foreground="#FFB2B2B2" BorderBrush="#FF4D4D4D" Click="klik_Nazad"/>
+            <Button   x:FieldModifier="public" Name="dugme_OsveziTabeluKarataAdmin"  Width="80"  Height="20"  Grid.Row="0" HorizontalAlignment="Right"  VerticalAlignment="Center" Margin="0,0,15,0" Content="Osvezi tabelu" Background="#FF2E2E2E" Foreground="#FFB2B2B2" BorderBrush="#FF4D4D4D"/>
+            <DataGrid x:FieldModifier="public" Name="datagrid_Karte"                 Width="770" Height="385" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top"    Margin="15,5,15,5" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding idKarte}"   Header="ID Karte"   Width="*"/>
+                    <DataGridTextColumn Binding="{Binding idFilma}"   Header="ID Filma"   Width="*"/>
+                    <DataGridTextColumn Binding="{Binding idSale}"    Header="ID Sale"    Width="*"/>
+                    <DataGridTextColumn Binding="{Binding idSedista}" Header="ID Sedista" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Viewbox>
+</Window>
