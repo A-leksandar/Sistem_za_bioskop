@@ -1,0 +1,329 @@
+create database DB_Sistem_za_Bioskop
+go
+
+ALTER DATABASE [DB_Sistem_za_Bioskop] COLLATE Latin1_General_100_CI_AS;
+go
+
+use DB_Sistem_za_Bioskop
+go
+
+create table FILM(
+	idFilma int identity primary key not null,
+	nazivFilma nvarchar(50) not null,
+	opisFilma nvarchar(600) not null,
+	godinaIzdanja int not null,
+	zanr nvarchar(25) not null,
+	cena money not null
+)
+go
+
+INSERT INTO FILM (nazivFilma, opisFilma, godinaIzdanja, zanr, cena)
+VALUES (N'Lake House', N'Romantični film', 2006, N'Romansa', 560.00),
+       (N'Blade', N'Vampir sa mačevima.', 1998, N'Akcija', 390.00),
+       (N'Men in Black', N'Nećete se sećati ovog filma.', 1997, N'Naučna fantastika', 430.00),
+       (N'The Matrix', N'Plava pilula ili crvena pilula?', 1999, N'Akcija', 390.00),
+       (N'Morbius', N'Lift pun šišmiša!', 2022, N'Akcija', 390.00),
+       (N'Final Destination', N'Ne trepći', 2000, N'Horor', 400.00),
+       (N'White Chicks', N'Nije onako kako izgleda.', 2004, N'Komedija', 450.00),
+       (N'The Hot Chick', N'Kriza identiteta', 2002, N'Komedija', 460.00),
+       (N'RV', N'Izvući porodicu iz kuće.', 2006, N'Komedija', 450.00),
+       (N'Norbit', N'Ne kači se sa Raspušom', 2007, N'Komedija', 460.00),
+       (N'Daddy Day Care', N'Kako je to dospelo na plafon?', 2003, N'Komedija', 450.00),
+       (N'The Jacket', N'Vreme.', 2005, N'Misterija', 470.00),
+       (N'Howl''s Moving Castle', N'Čarobno', 2004, N'Animirani', 420.00),
+       (N'Spirited Away', N'Misteriozna građevina usred šume vodi do nedođije.', 2001, N'Animirani', 420.00),
+       (N'Grease', N'Australija i sudbina.', 1978, N'Mjuzikl', 380.00),
+       (N'Scarface', N'Vanilin šećer.', 1983, N'Kriminalistički', 410.00),
+       (N'Magnus', N'Šah.', 2016, N'Dokumentarac', 370.00),
+       (N'Oppenheimer', N'"Now I am become Death, the destroyer of worlds."', 2023, N'Istorija', 500.00),
+       (N'Blink Twice', N'Trepni dvaput.', 2024, N'Triler', 400.00),
+       (N'Forgotten', N'Tuđa sećanja', 2017, N'Triler', 490.00),
+       (N'Porco Rosso', N'Hotel Adriano, leteći gusari i kletva veštice.', 1992, N'Animirani', 390.00),
+       (N'Čudesna šuma', N'Slikar i šumska bića u borbi protiv zlog kaktus cara.', 1986, N'Animirani', 400.00),
+       (N'The Hobbit An Unexpected Journey', N'Neočekivana žurka, neočekivana pustolovina, žive planine, orlovi,...', 2012, N'Fantazija', 560.00),
+       (N'The Hobbit The Desolation of Smaug', N'Mračna šuma i začarana reka, beg iz kraljevstva vilenjaka, grad na vodi, drevno kraljevstvo patuljaka, zlato,...', 2013, N'Fantazija', 560.00),
+       (N'The Hobbit The Battle of the Five Armies', N'Vatrena stihija, okupljanje armija, borba 5 armija,...', 2014, N'Fantazija', 560.00),
+       (N'The Lord of the Rings The Fellowship of the Ring', N'Vatrometi, mračni jahači, kuća vilenjaka, borba u šumi,...', 2001, N'Fantazija', 560.00),
+       (N'The Lord of the Rings The Two Towers', N'Mračna šuma, lov, opsada i odbrana,...', 2002, N'Fantazija', 560.00),
+       (N'The Lord of the Rings The Return of The King', N'Krunisanje, veliki pauk, juriš i,...', 2003, N'Fantazija', 560.00)
+go
+
+create table SALA(
+	idSale int identity primary key not null,
+	nazivSale nvarchar(25) not null
+)
+go
+
+INSERT INTO SALA (nazivSale)
+VALUES ('SALA 1'),
+       ('SALA 2'),
+       ('SALA 3'),
+       ('SALA 4'),
+       ('SALA 5'),
+       ('SALA 6')
+go
+
+create table SEDISTE(
+	idSedista int primary key not null
+)
+go
+
+insert into SEDISTE (idSedista)
+VALUES (1), (2), (3), (4), (5), (6), (7), (8), (9), (10), (11), (12),
+       (13), (14), (15), (16), (17), (18), (19), (20), (21), (22), (23), (24),
+       (25), (26), (27), (28), (29), (30), (31), (32), (33), (34), (35), (36),
+       (37), (38), (39), (40), (41), (42), (43), (44), (45), (46), (47), (48),
+       (49), (50), (51), (52), (53), (54), (55), (56), (57), (58), (59), (60)
+go
+
+create table PROJEKCIJA(
+	idProjekcije int identity primary key not null,
+	datumProjekcije datetime not null,
+	idSale int not null,
+	idFilma int not null
+)
+go
+
+alter table PROJEKCIJA
+add constraint fk_sala_projekcija foreign key (idSale) references SALA(idSale)
+go
+
+alter table PROJEKCIJA
+add constraint fk_film_projekcija foreign key (idFilma) references FILM(idFilma)
+go
+
+create table SE_NALAZI_U (
+	idSale int not null,
+	idSedista int not null,
+	idProjekcije int not null,
+	rezervisano varchar(2) not null,
+	primary key(idSale, idSedista, idProjekcije),
+	foreign key (idSale) references SALA (idSale),
+	foreign key (idSedista) references SEDISTE (idSedista),
+	foreign key (idProjekcije) references PROJEKCIJA (idProjekcije)
+)
+go
+
+create table OSOBA(
+	idOsobe int identity primary key not null,
+	ime nvarchar(30) not null,
+	prezime nvarchar(50) not null
+)
+go
+
+INSERT INTO OSOBA (ime, prezime)
+VALUES ('Sandra', 'Bullock'), ('Carrie-Anne', 'Moss'), ('Keanu', 'Reeves'), ('Laurence', 'Fishburne'),
+       ('Hugo', 'Weaving'), ('Ian', 'McKellen'), ('Christopher', 'Lee'), ('Viggo', 'Mortensen'),
+       ('Elijah', 'Wood'), ('Sean', 'Astin'), ('Andy', 'Serkis'), ('Cate', 'Blanchett'), ('Billy', 'Boyd'),
+       ('John', 'Noble'), ('John', 'Rhys-Davies'), ('Orlando', 'Bloom'), ('Sean', 'Bean'), ('Dominic', 'Monaghan'),
+       ('Ian', 'Holm'), ('Richard', 'Armitage'), ('Aidan', 'Turner'), ('Benedict', 'Cumberbatch'),
+       ('Luke', 'Evans'), ('Lee', 'Pace'), ('James', 'Nesbitt'), ('John', 'Callen'), ('Graham', 'Mc Tavish'),
+       ('Peter', 'Hambleton'), ('Ken', 'Stott'), ('William', 'Kircher'), ('Sylvester', 'McCoy'), ('Mark', 'Hadlow'),
+       ('Jed', 'Brophy'), ('Adam', 'Brown'), ('Dean', 'O''Gorman'), ('Stephen', 'Fry'), ('Ryan', 'Gage'),
+       ('Jared', 'Leto'), ('Matt', 'Smith'),('Jared', 'Harris'),
+       ('Devon', 'Sawa'), ('Ali', 'Larter'), ('Kerr', 'Smith'),
+       ('Rob', 'Schneider'), ('Rachel', 'McAdams'), ('Matthew', 'Lawrence'), ('Anna', 'Faris'),
+       ('Robin', 'Williams'), ('Josh', 'Hutcherson'), ('Cheryl', 'Hines'),
+       ('Terry', 'Crews'), ('Thandiwe', 'Newton'), ('Cuba', 'Gooding Jr.'),
+       ('Will', 'Smith'), ('Tommy Lee', 'Jones'),
+       ('Eddie', 'Murphy'), ('Jeff', 'Garlin'), ('Steve', 'Zahn'), ('Anjelica', 'Huston'),
+       ('Wesley', 'Snipes'), ('Kris', 'Kristofferson'),
+       ('Marlon', 'Wayans'), ('Shawn', 'Wayans'),
+       ('Adrien', 'Brody'), ('Keira', 'Knightley'), ('Daniel', 'Craig'), ('Jennifer Jason', 'Leigh'),
+       ('John', 'Travolta'), ('Olivia', 'Newton-John'), ('Stockard', 'Channing'),
+       ('Al', 'Pacino'), ('Michelle', 'Pfeiffer'), ('Robert', 'Loggia'),
+       ('Magnus', 'Carlsen'), ('Garry', 'Kasparov'), ('Viswanathan', 'Anand'),
+       ('Cillian', 'Murphy'), ('Matt', 'Damon'), ('Emily', 'Blunt'), ('Robert', 'Downey Jr.'),
+       ('Naomi', 'Ackie'), ('Channing', 'Tatum'), ('Chrstian', 'Slater'), ('Alia', 'Shawkat'),
+       ('Kang', 'Ha-neul'), ('Kim', 'Mu-yeol'), ('Yeon', 'Je-Hyung'), ('Jung', 'Taek-hyun')
+go
+
+create table RADNIK(
+	idRadnika int identity primary key not null,
+	radnaPozicija nvarchar(40) not null,
+	JMBG char(13) not null,
+	PTT int not null,
+	adresaStanovanja nvarchar(80) not null,
+	kontaktTelefon nvarchar(20) not null,
+	plata money not null,
+	idOsobe int not null
+)
+go
+
+alter table RADNIK
+add constraint fk_osoba_radnik foreign key (idOsobe) references OSOBA (idOsobe)
+go
+
+create table GLUMAC(
+	idGlumca int identity primary key not null,
+	idOsobe int not null
+)
+go
+
+alter table GLUMAC
+add constraint fk_osoba_glumac foreign key (idOsobe) references OSOBA (idOsobe)
+go
+
+INSERT INTO GLUMAC(idOsobe)
+VALUES (1),(2),(3),(4),(5),(6),(7),(8),(9),(10),
+       (11),(12),(13),(14),(15),(16),(17),(18),(19),(20),
+       (21),(22),(23),(24),(25),(26),(27),(28),(29),(30),
+       (31),(32),(33),(34),(35),(36),(37),(38),(39),(40),
+       (41),(42),(43),(44),(45),(46),(47),(48),(49),(50),
+       (51),(52),(53),(54),(55),(56),(57),(58),(59),(60),
+       (61),(62),(63),(64),(65),(66),(67),(68),(69),(70),
+       (71),(72),(73),(74),(75),(76),(77),(78),(79),(80),
+       (81),(82),(83),(84),(85),(86),(87),(88)
+go
+
+create table GLUMI(
+	idUloge int identity primary key not null,
+	uloga nvarchar(40) not null,
+	idGlumca int not null,
+	idFilma int not null
+)
+go
+
+alter table GLUMI
+add constraint fk_glumac_glumi foreign key (idGlumca) references GLUMAC (idGlumca)
+go
+
+alter table GLUMI
+add constraint fk_film_glumi foreign key (idFilma) references FILM (idFilma)
+go
+
+INSERT INTO GLUMI (uloga, idGlumca, idFilma)
+VALUES ('Kate Forster', 1, 1),
+       ('Alex Wyler', 3, 1),
+       ('Neo', 3, 4),
+       ('Trinity', 2, 4),
+       ('Morpheus', 4, 4),
+       ('Gandalf', 6, 26),
+       ('Bilbo Baggins', 19, 26),
+       ('Elrond', 5, 26),
+       ('Saruman', 7, 26),
+       ('Aragorn', 8, 26),
+       ('Frodo Baggins', 9, 26),
+       ('Boromir', 17, 26),
+       ('Galadriel', 12, 26),
+       ('Gandalf', 6, 27),
+       ('Saruman', 7, 27),
+       ('Frodo Baggins', 9, 27),
+       ('Sam', 10, 27),
+       ('Gollum', 11, 27),
+       ('Peregrin Took (Pippin)', 13, 27),
+       ('Denethor', 14, 27),
+       ('Gimli', 15, 27),
+       ('Legolas', 16, 27),
+       ('Gandalf', 6, 28),
+       ('Elrond', 5, 28),
+       ('Aragorn', 8, 28),
+       ('Frodo Baggins', 9, 28),
+       ('Sam', 10, 28),
+       ('Gollum', 11, 28),
+       ('Denethor', 14, 28),
+       ('Gimli', 15, 28),
+       ('Dr. Michael Morbius', 38, 5),
+       ('Milo', 39, 5),
+       ('Dr. Emil Nicholas', 40, 5),
+       ('Alex Browning', 41, 6),
+       ('Clear Rivers', 42, 6),
+       ('Carter Horton', 43, 6),
+       ('Jessica', 44, 8),
+       ('Jessica', 45, 8),
+       ('Billy', 46, 8),
+       ('April', 47, 8),
+       ('Latrell Spencer', 51, 7),
+       ('Marcus Copeland', 62, 7),
+       ('Kevin Copeland', 63, 7),
+       ('Bob Munro', 48, 9),
+       ('Carl Munro', 49, 9),
+       ('Jamie Munro', 50, 9),
+       ('Big Jack Latimore', 51, 10),
+       ('Kate Thomas', 52, 10),
+       ('Deion Hughes', 53, 10),
+       ('Charlie Hinton', 56, 11),
+       ('Phil', 57, 11),
+       ('Marvin', 58, 11),
+       ('Mrs. Gwyneth Harridan', 59, 11),
+       ('Jack Stars', 64, 12),
+       ('Jackie Price', 65, 12),
+       ('Rudy Mackenzie', 66, 12),
+       ('Dr. Beth Lorenson', 67, 12),
+       ('Danny Zuko', 68, 15),
+       ('Sandy', 69, 15),
+       ('Rizzo', 70, 15),
+       ('Tony Montana', 71, 16),
+       ('Elvira Hancock', 72, 16),
+       ('Frank Lopez', 73, 16),
+       ('Magnus Carlsen', 74, 17),
+       ('Garry Kasparov', 75, 17),
+       ('Viswanathan Anand', 76, 17),
+       ('J. Robert Oppenheimer', 77, 18),
+       ('Leslie Groves', 78, 18),
+       ('Kitty Oppenheimer', 79, 18),
+       ('Lewis Strauss', 80, 18),
+       ('Frida', 81, 19),
+       ('Slater', 82, 19),
+       ('Vic', 83, 19),
+       ('Jess', 84, 19),
+       ('Jin-seok', 85, 20),
+       ('Yoo-seok', 86, 20),
+       ('Student at police station', 87, 20),
+       ('Yoo-seok (teen)', 88, 20)
+go
+
+
+create table KORISNIK(
+	idKorisnika int identity primary key not null,
+	email varchar(100) unique not null,
+	lozinka nvarchar(50) not null,
+	idOsobe int not null
+)
+go
+
+alter table KORISNIK
+add constraint fk_osoba_korisnik foreign key (idOsobe) references OSOBA (idOsobe)
+go
+
+create table KARTA(
+	idKarte int identity primary key not null,
+	idFilma int not null,
+	idSale int not null,
+	idSedista int not null,
+	idProjekcije int not null
+)
+go
+
+alter table KARTA
+add constraint fk_film_karta foreign key (idFilma) references FILM (idFilma)
+go
+
+alter table KARTA
+add constraint fk_sala_karta foreign key (idSale) references SALA (idSale)
+go
+
+alter table KARTA
+add constraint fk_sediste_karta foreign key (idSedista) references SEDISTE (idSedista)
+go
+
+alter table KARTA
+add constraint fk_projekcija_karta foreign key (idProjekcije) references PROJEKCIJA (idProjekcije)
+go
+
+create table TRANSAKCIJA(
+	idTransakcije int identity primary key not null,
+	brojKartice varchar(16) not null,
+	bezbednosniBroj varchar(4) not null,
+	idKorisnika int not null,
+	idKarte int not null
+)
+go
+
+alter table TRANSAKCIJA
+add constraint fk_korisnik_transakcija foreign key (idKorisnika) references KORISNIK (idKorisnika)
+go
+
+alter table TRANSAKCIJA
+add constraint fk_karta_transakcija foreign key (idKarte) references KARTA (idKarte)
+go
